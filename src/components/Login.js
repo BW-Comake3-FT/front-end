@@ -11,11 +11,12 @@ const Login = props => {
 
   const onSubmit = credentials => {
     props.login(credentials,props.history);
-    console.log('login onsubmit', credentials)
+    console.log('login onsubmit', {credentials})
   }
 
   console.log({props},'im the props')
-
+ 
+  
   return (
     <div>
       <h1>Login</h1>

@@ -1,69 +1,65 @@
-import React from 'react'
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function Signup(props) {
-    const {
-        values,
-        onInputChange,
-        onSubmit,
-        disabled,
-        errors,
-    } = props
+import { signup } from '../actions';
 
+const Signup = props => {
+    const { register, handleSubmit, errors } = useForm();
+    // const {
+    //     values,
+    //     onInputChange,
+    //     onSubmit,
+    //     disabled,
+    //     errors,
+    // } = props
+
+    const onSubmit = (newUser, history ) => {
+        props.signup(newUser, props.history);
+        console.log('signup onsubmit')
+    }
 
     return(
-        <form className='signup container'>
-            <div className='signup nav'>
-                <h3>Co-Make</h3>
-                <h3>Login!</h3>
-            </div>
-            
-            <div className='main signup'>
-                <h2>Sign Up</h2>
-                <div className='errors'>
-                    {errors.name}
-                    {errors.email}
-                    {errors.zipcode}
-                </div>
-
-                <label>Name:
-                    <input  
-                        value={values.name}
-                        onChacnge={onInputChange}
-                        name='name'
-                        type='text'
-                    /></label>
-                
-                <label>Email:
-                    <input
-                        value={values.email}
-                        onChange={onInputChange}
-                        name='email'
-                        type='text'
-                    />
+    <form className='signup container'>
+        <div className='signup nav'>
+        <h3>Co-Make</h3>
+        <h3>Login!</h3>
+        </div>
+         <div className='main signup'>
+            <h2>Sign Up</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+         <label>Name:
+             <input  
+             name='name'
+             type='text'
+             />
+         </label>
+         <label>Email:
+            <input
+             name='email'
+             type='text'
+            />
+            </label>
+            <label>Password:
+              <input
+               id='password'
+               type='password'
+               name='password'
+                />
                 </label>
-
-                <label>Password:
-                    <input
-                        value={values.password}
-                        onChange={onInputChange}
-                        name='password'
-                        type='password'
-                    />
-                </label>
-
                 <label>Zipcode
-                    <input
-                        value={values.zipcode}
-                        onChange={onInputChange}
-                        name='zipcode'
-                        type='text'
-                    />
+                <input
+                name='zipcode'
+                type='text'
+                />
                 </label>
-
-                <button onClick={onSubmit} disabled={disabled}>Submit</button>
+                <button type='submit'>Submit</button>
+                </form>
             </div>
-
-            <h4>Already have an account? <Link>Log in!</Link></h4>
+<h4>Already have an account? <Link to='/'>Log in!</Link></h4>
         </form>
     )
 }
+
+export default connect(null, { signup })(Signup);
