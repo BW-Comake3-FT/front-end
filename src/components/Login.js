@@ -11,7 +11,7 @@ const Login = props => {
 
   const onSubmit = credentials => {
     props.login(credentials,props.history);
-    console.log('login onsbumit', credentials)
+    console.log('login onsubmit', credentials)
   }
 
   console.log({props},'im the props')

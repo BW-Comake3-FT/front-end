@@ -16,7 +16,7 @@ export const login = (credentials, history) => dispatch => {
   dispatch({ type: LOGIN_START});
 
   return(
-   axios.post('https://essentialism-pg-be.herokuapp.com/api/auth/login', credentials)
+   axios.post('', credentials)
    .then(res => console.log({res}))
    .catch(err => console.log({err}))
   );
