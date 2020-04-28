@@ -6,7 +6,11 @@ import { connect } from 'react-redux';
 import { signup } from '../actions';
 
 const Signup = props => {
-    const { register, handleSubmit, errors } = useForm();
+    const { 
+        register, 
+        handleSubmit, 
+        // errors 
+    } = useForm();
     // const {
     //     values,
     //     onInputChange,
@@ -15,9 +19,9 @@ const Signup = props => {
     //     errors,
     // } = props
 
-    const onSubmit = (newUser, history ) => {
-        props.signup(newUser, props.history);
-        console.log('signup onsubmit')
+    const onSubmit = newUser => {
+         props.signup(newUser);
+        console.log('signup onsubmit', newUser)
     }
 
     return(
@@ -29,6 +33,9 @@ const Signup = props => {
              id='name' 
              name='name'
              type='text'
+             ref={register({
+                 required: 'Required'
+             })}
              />
          </label>
          <label>Email:
@@ -36,6 +43,9 @@ const Signup = props => {
              id='email'
              name='email'
              type='text'
+             ref={register({
+                 required: 'Required'
+             })}
             />
             </label>
             <label>Password:
@@ -43,13 +53,19 @@ const Signup = props => {
                id='password'
                type='password'
                name='password'
+               ref={register({
+                 required: 'Required'
+             })}
                 />
                 </label>
                 <label>Zipcode
                 <input
                 id='zipcode'
                 name='zipcode'
-                type='text'
+                type='number'
+                ref={register({
+                 required: 'Required'
+             })}
                 />
                 </label>
                 <button type='submit'>Submit</button>

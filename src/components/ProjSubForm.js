@@ -26,6 +26,9 @@ return(
         id='title'
         name='title'
         placeholder='Title'
+        ref={register({
+                 required: 'Required'
+             })}
         />
       </label>
       <label htmlFor="description">
@@ -34,6 +37,9 @@ return(
         id='description'
         name='description'
         placeholder='Description'
+        ref={register({
+                 required: 'Required'
+             })}
         />
       </label>
 

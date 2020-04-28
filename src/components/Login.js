@@ -7,11 +7,15 @@ import { login } from '../actions';
 
 
 const Login = props => {
-  const { register, handleSubmit, errors } = useForm();
+  const { 
+    register, 
+    handleSubmit, 
+    // errors 
+  } = useForm();
 
   const onSubmit = credentials => {
     props.login(credentials,props.history);
-    console.log('login onsubmit', {credentials})
+    // console.log('login onsubmit', {credentials})
   }
 
   console.log({props},'im the props')
@@ -28,6 +32,9 @@ const Login = props => {
           type="email" 
           name='email'
           placeholder='john@doe.com'
+          ref={register({
+                 required: 'Required'
+             })}
          />
          <label htmlFor="password">Password</label>
          <input 
@@ -35,6 +42,9 @@ const Login = props => {
          type="password"
          name='password'
          placeholder='password'
+         ref={register({
+                 required: 'Required'
+             })}
          />
          <button type='submit'>Login</button>
         </form>

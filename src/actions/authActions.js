@@ -16,19 +16,24 @@ export const login = (credentials, history) => dispatch => {
   dispatch({ type: LOGIN_START});
 
   return(
-   axios
-   .post('', credentials)
-   .then(res => console.log({res}))
-   .catch(err => console.log({err}))
-  // console.log({credentials}, 'creds')
+   axios.post('https://cors-anywhere.herokuapp.com/https://co-make-app.herokuapp.com/api/auth/login', credentials)
+   .then(res => {
+     localStorage.setItem('token', res.data.token)
+     dispatch({ type: LOGIN_SUCCESS });
+     history.push('/dashboard');
+    //  , payload: res.data.token
+   })
+   .catch(err => {
+     dispatch({ type: LOGIN_FAILURE, payload: err})
+   })
   );
 };
 
-export const signup = (newUser, history) => dispatch => {
+export const signup = (newUser) => dispatch => {
   console.log('signup action firing');
   dispatch({ type: SIGNUP_START });
   return(
-    axios.post('https://co-make-app.herokuapp.com/api/auth/register', newUser)
+    axios.post('https://cors-anywhere.herokuapp.com/https://co-make-app.herokuapp.com/api/auth/register', newUser)
     .then(res => console.log(res))
     // dispatch({ type: SIGNUP_SUCCESS, payload:  })
     .catch(err => console.log(err))
