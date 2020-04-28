@@ -1,19 +1,19 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+// import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-import { submitProject } from '../actions';
+// import { submitProject } from '../actions';
 
 
 
 const ProjSubForm = props => {
 
-const { handleSubmit, register, errors} = useForm();
+ const { handleSubmit, register, errors} = useForm();
 
-const dispatch = useDispatch();
+// const dispatch = useDispatch();
 
-const onSubmit = () => {
-}
+// const onSubmit = () => {
+// }
 
 return(
   <div>
@@ -26,6 +26,9 @@ return(
         id='title'
         name='title'
         placeholder='Title'
+        ref={register({
+                 required: 'Required'
+             })}
         />
       </label>
       <label htmlFor="description">
@@ -34,6 +37,9 @@ return(
         id='description'
         name='description'
         placeholder='Description'
+        ref={register({
+                 required: 'Required'
+             })}
         />
       </label>
 
@@ -49,4 +55,4 @@ return(
 
 }
 
-export default ProjSubForm
+export default ProjSubForm;

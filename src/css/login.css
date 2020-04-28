@@ -1,0 +1,10 @@
+/* Login Form Styles */
+
+.login_form{
+  border: 1px solid red;
+  height: 100vh;
+}
+
+h1{
+  text-align: center;
+}

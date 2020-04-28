@@ -3,22 +3,28 @@ import { useForm } from 'react-hook-form';
  import { Link } from 'react-router-dom';
  import { connect } from 'react-redux';
  
+ import '../css/login.css';
+
 import { login } from '../actions';
 
 
 const Login = props => {
-  const { register, handleSubmit, errors } = useForm();
+  const { 
+    register, 
+    handleSubmit, 
+    // errors 
+  } = useForm();
 
   const onSubmit = credentials => {
-    props.login(credentials,props.history);
-    console.log('login onsubmit', {credentials})
+    props.login(credentials);
+    // console.log('login onsubmit', {credentials})
   }
 
   console.log({props},'im the props')
  
   
   return (
-    <div>
+    <div className='login_form'>
       <h1>Login</h1>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}> 
@@ -28,6 +34,9 @@ const Login = props => {
           type="email" 
           name='email'
           placeholder='john@doe.com'
+          ref={register({
+                 required: 'Required'
+             })}
          />
          <label htmlFor="password">Password</label>
          <input 
@@ -35,6 +44,9 @@ const Login = props => {
          type="password"
          name='password'
          placeholder='password'
+         ref={register({
+                 required: 'Required'
+             })}
          />
          <button type='submit'>Login</button>
         </form>
