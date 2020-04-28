@@ -6,18 +6,44 @@ import PrivateRoute from './components/PrivateRoute';
 
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Navigation from './components/Navigation';
+import Dashboard from './components/Dashboard';
+import ProjSubForm from './components/ProjSubForm';
+import ProjEditSubForm from './components/ProjEditSubForm';
 
 function App() {
   return (
     <div className="App">
    <h1>App</h1>
+   <Navigation/>
+
    <Switch>
+
      <Route 
-     exact path='/' 
-     component={Login}/>
+      exact path='/' 
+      component={Login}
+      />
+
      <Route 
-     path='/signup' 
-     component={Signup} />
+      path='/signup' 
+      component={Signup} 
+      />
+
+      <PrivateRoute 
+      exact path='/dashboard'
+      component={Dashboard}
+       />    
+
+      <PrivateRoute
+      path='/submit-form'
+      component={ProjSubForm} 
+      />
+
+      <PrivateRoute 
+       path='/edit-submission'
+       component={ProjEditSubForm}
+      />
+
    </Switch>
     </div>
   );
