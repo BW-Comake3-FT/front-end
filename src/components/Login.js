@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
  import { Link } from 'react-router-dom';
  import { connect } from 'react-redux';
  
+ import '../css/login.css';
+
 import { login } from '../actions';
 
 
@@ -14,7 +16,7 @@ const Login = props => {
   } = useForm();
 
   const onSubmit = credentials => {
-    props.login(credentials,props.history);
+    props.login(credentials);
     // console.log('login onsubmit', {credentials})
   }
 
@@ -22,7 +24,7 @@ const Login = props => {
  
   
   return (
-    <div>
+    <div className='login_form'>
       <h1>Login</h1>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}> 

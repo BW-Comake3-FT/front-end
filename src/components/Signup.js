@@ -70,12 +70,10 @@ const Signup = props => {
                 </label>
                 <button type='submit'>Submit</button>
                 </form>
-            
-<Link to='/'>
-<p>Already have an account? Log in!</p>
-</Link>
-</div>
+        <Link to='/'>
+            <p>Already have an account? Log in!</p>
+        </Link>
+    </div>
     )
 }
-
 export default connect(null, { signup })(Signup);

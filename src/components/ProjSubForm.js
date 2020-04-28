@@ -1,19 +1,19 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+// import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-import { submitProject } from '../actions';
+// import { submitProject } from '../actions';
 
 
 
 const ProjSubForm = props => {
 
-const { handleSubmit, register, errors} = useForm();
+ const { handleSubmit, register, errors} = useForm();
 
-const dispatch = useDispatch();
+// const dispatch = useDispatch();
 
-const onSubmit = () => {
-}
+// const onSubmit = () => {
+// }
 
 return(
   <div>

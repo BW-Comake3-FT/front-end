@@ -28,12 +28,21 @@ function App() {
       component={Signup} 
       />
 
-      <PrivateRoute 
+      <Route 
       exact path='/dashboard'
       component={Dashboard}
-       />    
+      />
+      {/* <PrivateRoute 
+      exact path='/dashboard'
+      component={Dashboard}
+       />     */}
 
-      <PrivateRoute
+      {/* <PrivateRoute
+      path='/submit-form'
+      component={ProjSubForm} 
+      /> */}
+      
+       <Route
       path='/submit-form'
       component={ProjSubForm} 
       />
@@ -42,6 +51,10 @@ function App() {
        path='/edit-submission'
        component={ProjEditSubForm}
       />
+
+       <Route 
+        component={Login}
+       />
 
    </Switch>
     </div>
