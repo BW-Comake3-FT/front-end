@@ -21,7 +21,6 @@ const Signup = props => {
     }
 
     return(
-    <form className='signup container'>
          <div className='main signup'>
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -55,11 +54,11 @@ const Signup = props => {
                 </label>
                 <button type='submit'>Submit</button>
                 </form>
-            </div>
+            
 <Link to='/'>
 <p>Already have an account? Log in!</p>
 </Link>
-        </form>
+</div>
     )
 }
 

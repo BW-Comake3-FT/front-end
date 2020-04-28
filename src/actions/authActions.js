@@ -16,7 +16,8 @@ export const login = (credentials, history) => dispatch => {
   dispatch({ type: LOGIN_START});
 
   return(
-   axios.post('', credentials)
+   axios
+   .post('', credentials)
    .then(res => console.log({res}))
    .catch(err => console.log({err}))
   // console.log({credentials}, 'creds')
