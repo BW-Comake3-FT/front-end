@@ -27,7 +27,7 @@ export const signup = (newUser, history) => dispatch => {
   console.log('signup action firing');
   dispatch({ type: SIGNUP_START });
   return(
-    axios.post('', newUser)
+    axios.post('https://co-make-app.herokuapp.com/api/auth/register', newUser)
     .then(res => console.log(res))
     // dispatch({ type: SIGNUP_SUCCESS, payload:  })
     .catch(err => console.log(err))

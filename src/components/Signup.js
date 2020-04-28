@@ -22,21 +22,19 @@ const Signup = props => {
 
     return(
     <form className='signup container'>
-        <div className='signup nav'>
-        <h3>Co-Make</h3>
-        <h3>Login!</h3>
-        </div>
          <div className='main signup'>
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
          <label>Name:
-             <input  
+             <input 
+             id='name' 
              name='name'
              type='text'
              />
          </label>
          <label>Email:
             <input
+             id='email'
              name='email'
              type='text'
             />
@@ -50,6 +48,7 @@ const Signup = props => {
                 </label>
                 <label>Zipcode
                 <input
+                id='zipcode'
                 name='zipcode'
                 type='text'
                 />
@@ -57,7 +56,9 @@ const Signup = props => {
                 <button type='submit'>Submit</button>
                 </form>
             </div>
-<h4>Already have an account? <Link to='/'>Log in!</Link></h4>
+<Link to='/'>
+<p>Already have an account? Log in!</p>
+</Link>
         </form>
     )
 }
