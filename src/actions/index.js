@@ -11,3 +11,9 @@ export {
   LOGOUT_START,
   LOGOUT_SUCCESS,
 } from './authActions';
+
+export { 
+  fetchProjects,
+  FETCH_PROJECTS_START,
+  FETCH_PROJECTS_SUCCESS
+} from './userActions';

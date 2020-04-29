@@ -20,7 +20,7 @@ const Signup = props => {
     // } = props
 
     const onSubmit = newUser => {
-         props.signup(newUser);
+         props.signup(newUser, props.history);
         console.log('signup onsubmit', newUser)
     }
 
