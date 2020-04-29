@@ -11,6 +11,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
+
 export const login = (credentials, history) => dispatch => {
   console.log(credentials,'login action firing');
   dispatch({ type: LOGIN_START});
@@ -18,6 +19,7 @@ export const login = (credentials, history) => dispatch => {
   return(
    axios.post('https://cors-anywhere.herokuapp.com/https://co-make-app.herokuapp.com/api/auth/login', credentials)
    .then(res => {
+     console.log(res,' response from login ')
      localStorage.setItem('token', res.data.token)
      dispatch({ type: LOGIN_SUCCESS });
      history.push('/dashboard');

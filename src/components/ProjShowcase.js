@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 import '../css/dashboard.css';
 
 import { fetchProjects } from '../actions';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+import { deleteProject } from '../actions'
 
 
 const ProjShowcase = props => {
   const [nearProj, setNearProj] = useState(false);
   const [myProj, setMyProj] = useState(false);
+  const [usersProjects, setUsersProjects] = useState([])
+
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
  const showNearMe = (e) => {
   e.preventDefault();
@@ -24,9 +30,22 @@ const ProjShowcase = props => {
     setNearProj(false)
   }
 
+  // const toggleSwitch = (e, setState) => {
+  //   e.preventDefault();
+  //   setState(prevState => !prevState)
+  // }
+
+ 
+const handleDelete = id => {
+    dispatch(deleteProject(id))
+  }
+
   useEffect(() => {
     dispatch(fetchProjects())
-  }, [nearProj])
+  }, [nearProj, myProj ])
+
+  
+  
 
   console.log(nearProj,'near proj here')
   console.log(myProj, 'my proj here')
@@ -37,8 +56,9 @@ const ProjShowcase = props => {
 
       <button 
       onClick={showNearMe}
+      // (e => toggleSwitch(e, setNearProj))
       className='project_button'>
-      Projects Near Me
+      Projects
       </button>
 
       <button 
@@ -53,14 +73,41 @@ const ProjShowcase = props => {
       </button>
      </div>
         <div className='project_showcase'>
-          <h2>Actual projects</h2>
           {nearProj && (
-            <div>
+            <div className='project_info'>
               {props.projectReducer.projects.map(project => { 
-                return <h1>{project.title}</h1>})}
+                return (
+                <div key={project.id} className='project'>
+                <h1>{project.category}</h1>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+                <p>{project.location}</p>
+                <p>{project.timestamp}</p>
+                <p>{project.solution}</p>
+                </div>
+                )})}
             </div>
           )}
-          {myProj && (<h2>Show My Projects</h2>)}
+          {myProj && (
+            <div className='project_info'>
+            <h1>My Projects</h1>
+              {props.projectReducer.usersProjects.map(project => {
+                return(
+                  <div key={project.id} className='project'>
+                    <h1>{project.title}</h1>
+                    <h2>{project.title}</h2>
+                    <p>{project.description}</p>
+                    <p>{project.location}</p>
+                    <p>{project.timestamp}</p>
+                    <p>{project.solution}</p>
+                    <button>Edit Project</button>
+                    <button onClick={() => handleDelete(project.id)}>Delete Project</button>
+                  </div>
+                )
+              })}
+            </div>
+            
+            )}
         </div>
     </>
   )
@@ -70,4 +117,4 @@ const mapStateToProps = state =>{
   return state;
 }
 
-export default connect( mapStateToProps , { } )(ProjShowcase);
+export default connect( mapStateToProps , {  deleteProject } )(ProjShowcase);
