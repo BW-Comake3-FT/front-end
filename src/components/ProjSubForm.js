@@ -15,8 +15,6 @@ const ProjSubForm = props => {
 
  const { handleSubmit, register, errors} = useForm();
 
-// const dispatch = useDispatch();
-
 const onSubmit = (newProject) => {
   props.submitProject(newProject,props.history)
   console.log('submit new form', newProject)
@@ -92,7 +90,6 @@ return(
       </label>
       <br/>
       <button className="submit" type='submit'>
-
         Submit
       </button>
       </form>

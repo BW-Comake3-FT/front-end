@@ -2,34 +2,27 @@ export {
   login,
   signup,
   logout,
-
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-
   SIGNUP_START,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
-
   LOGOUT_START,
   LOGOUT_SUCCESS,
-
 } from './authActions';
 
 export { 
   fetchProjects,
   submitProject,
-  deleteProject,
-
+  editProject,
+  addProjectToEdit,
+  ADD_PROJECT_TO_EDIT,
+  UPDATE_PROJECTS,
   FETCH_PROJECTS_START,
   FETCH_PROJECTS_SUCCESS, 
   FETCH_PROJECTS_FAILURE,
-
   SUBMIT_PROJECT_START,
   SUBMIT_PROJECT_SUCCESS, 
   SUBMIT_PROJECT_FAILURE,
-
-  DELETE_PROJECT_SUCCESS,
-  DELETE_PROJECT_FAILURE
-  
 } from './userActions';
