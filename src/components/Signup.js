@@ -11,7 +11,7 @@ const Signup = props => {
     const { 
         register, 
         handleSubmit, 
-        // errors 
+        errors 
     } = useForm();
 
     const onSubmit = newUser => {
@@ -34,6 +34,7 @@ const Signup = props => {
                     required: 'Required'
                 })}
                 />
+                {errors.name && "please submit a name"}
             </label>
             <br/>
             <label className="email_label_signup">Email:
@@ -47,6 +48,7 @@ const Signup = props => {
                     required: 'Required'
                 })}
                 />
+                {errors.email && "please enter a valid email"}
                 </label>
             <br/>
                 <label className="password_label_signup">Password:
@@ -60,6 +62,7 @@ const Signup = props => {
                     required: 'Required'
                 })}
                     />
+                {errors.password && "password must be 8 characters long"}
                     </label>
             <br/>
                     <label className="zipcode_label_signup">Zipcode:
@@ -73,6 +76,7 @@ const Signup = props => {
                     required: 'Required'
                 })}
                     />
+                    {errors.zipcode && "please enter a valid 5 digit zipcode"}
                     </label>
             <br/>
                     <button className="submit_signup" type='submit'>Submit</button>

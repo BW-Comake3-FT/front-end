@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
  import { Link } from 'react-router-dom';
  import { connect } from 'react-redux';
+ import * as yup from 'yup'
  
  import '../css/login.css';
 
@@ -41,6 +42,7 @@ const Login = props => {
                  required: 'Required'
              })}
          />
+         {errors.email  && "Valid email is required"}
          <br/>
          <label className="password_label_login"htmlFor="password">Password</label>
          <input 

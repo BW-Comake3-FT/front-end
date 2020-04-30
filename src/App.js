@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import Dashboard from './components/Dashboard';
 import ProjSubForm from './components/ProjSubForm';
 import ProjEditSubForm from './components/ProjEditSubForm';
+import ActiveUsers from './components/ActiveUsers';
 
 
 
@@ -18,7 +19,7 @@ function App() {
   return (
     <div className="App">
    <Navigation/>
-
+  <ActiveUsers />
    <Switch>
 
      <Route 
