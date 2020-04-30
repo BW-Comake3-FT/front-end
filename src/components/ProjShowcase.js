@@ -43,7 +43,7 @@ const ProjShowcase = () => {
       </button>
      </div>
         <div className='project_showcase'>
-          <h2>Actual projects</h2>
+          <h2>Current Projects</h2>
           {nearProj && (<h2>Show Projects Near Me</h2>)}
           {myProj && (<h2>Show My Projects</h2>)}
         </div>

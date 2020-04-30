@@ -4,10 +4,10 @@ font style: open sans
 
 font style: for logo: roboto slab
 
-maroon: c91757
+maroon: #c91757
 
-dark blue green: 008080
+dark blue green: #008080
 
-light grey: c83c3c
+light grey: #c83c3c
 
-grey paragraph text: 44474c
+grey paragraph text: #44474c

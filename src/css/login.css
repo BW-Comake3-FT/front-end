@@ -1,10 +1,98 @@
 /* Login Form Styles */
 
+/* =====MAIN PAGE===== */
+
 .login_form{
-  border: 1px solid red;
-  height: 100vh;
+  height: 92.5vh;
+  background-color: antiquewhite;
 }
 
-h1{
+/* =====TITLE OF PAGE===== */
+
+.title_login{
   text-align: center;
+  text-decoration: underline;
+  color: #c91757;
+  /* color: #008080; */
+}
+
+/* =====FORM===== */
+
+.sign_in_login{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 20px;
+  /* background-color: #c91757; */
+  background-color: #008080;
+  border-radius: 10px;
+  border: solid 10px black;
+}
+
+/* ---EMAIL--- */
+
+.email_label_login{
+  text-decoration: underline;
+  font-size: large;
+  padding: 10px;
+  padding-left: 58px;
+  font-weight: 500;
+}
+
+.email_input_login{
+  width: 80%;
+  height: 35px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border-style: none;
+}
+
+.email_input_login::placeholder{
+  padding-left: 10px;
+}
+
+/* ---PASSWORD--- */
+
+.password_label_login{
+  text-decoration: underline;
+  font-size: large;
+  padding: 10px;
+  padding-left: 58px;
+  font-weight: 500;
+}
+
+.password_input_login{
+  width: 80%;
+  height: 35px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border-style: none;
+}
+
+/* ---BUTTON--- */
+
+.submit_login{
+  width:80%;
+  margin: 20px auto;
+  border-radius: 5px;
+  height: 40px;
+  /* background-color: #008080; */
+  background-color: #c91757;
+  border-style: none;
+  border: 1px solid black;
+  font-weight: 600;
+  text-decoration: underline; 
+  font-size: large;
+}
+
+/* ---LINK--- */
+
+.no_account_login{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: max-content;
+  font-weight: bold;
+  color: lavender;
+  text-decoration: none;
 }

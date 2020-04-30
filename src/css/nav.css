@@ -1,6 +1,5 @@
 
 .nav_container{
- border: 1px solid green;
  background-color: #008080;
  display: flex;
  justify-content: space-evenly;
@@ -8,7 +7,6 @@
 
 .nav_logo{
   width: 20%;
-  /* border:1px solid red; */
 }
 
 .redCo{
@@ -17,7 +15,6 @@
 
 .nav_links{
   width: 70%;
-  border:1px solid green;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
