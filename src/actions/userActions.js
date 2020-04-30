@@ -10,10 +10,11 @@ export const SUBMIT_PROJECT_FAILURE = 'SUBMIT_PROJECT_FAILURE';
 
 export const SET_USER_PROJECTS = 'SET_USER_PROJECTS';
 
+export const UPDATE_PROJECTS = 'UPDATE_PROJECTS';
 export const ADD_PROJECT_TO_EDIT = 'ADD_PROJECT_TO_EDIT';
 
-export const DELETE_PROJECT_SUCCESS = 'DELETE_PROJECT_SUCCESS';
-export const DELETE_PROJECT_FAILURE = 'DELETE_PROJECT_FAILURE';
+// export const DELETE_PROJECT_SUCCESS = 'DELETE_PROJECT_SUCCESS';
+// export const DELETE_PROJECT_FAILURE = 'DELETE_PROJECT_FAILURE';
 
 
 
@@ -50,17 +51,34 @@ export const submitProject = (newProject, history) => dispatch => {
   })
 };
 
-export const deleteProject = (id) => dispatch => {
-  axiosWithAuth()
-  .delete(`/api/projects/${id}`)
-  .then(res => {
-    dispatch({ type: DELETE_PROJECT_SUCCESS })
-  })
-  .catch(err => {
-    dispatch({ type: DELETE_PROJECT_FAILURE})
-    console.log(err)
-  })
+export const addProjectToEdit = (project, history) => dispatch => {
+  console.log(project, 'I AM THE PROJECT BEING EDITED')
+  dispatch({ type: ADD_PROJECT_TO_EDIT, payload: project });
+  history.push('/edit-submission');
 }
+
+export const editProject = (project, id, history) => dispatch =>{
+axiosWithAuth()
+.put(`/api/projects`, project, id)
+.then(res => {
+  dispatch({ type: UPDATE_PROJECTS })
+  history.push('/dashboard');
+})
+.catch(err => console.log('edit project failed', err))
+}
+
+
+// export const deleteProject = (id) => dispatch => {
+//   axiosWithAuth()
+//   .delete(`/api/projects/${id}`)
+//   .then(res => {
+//     dispatch({ type: DELETE_PROJECT_SUCCESS })
+//   })
+//   .catch(err => {
+//     dispatch({ type: DELETE_PROJECT_FAILURE})
+//     console.log(err)
+//   })
+// }
 
 
 //  export const addProjectToEdit = (project, id,)

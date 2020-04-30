@@ -6,14 +6,20 @@ import '../css/dashboard.css';
 import { fetchProjects } from '../actions';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { deleteProject } from '../actions'
+import { addProjectToEdit } from '../actions'
+
+const jwt = require('jsonwebtoken')
+
+
 
 
 const ProjShowcase = props => {
   const [nearProj, setNearProj] = useState(false);
   const [myProj, setMyProj] = useState(false);
-  const [usersProjects, setUsersProjects] = useState([])
+ 
+  
 
+  const token = jwt.decode(window.localStorage.getItem('token'))
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,20 +41,38 @@ const ProjShowcase = props => {
   //   setState(prevState => !prevState)
   // }
 
+  
+
  
+
 const handleDelete = id => {
-    dispatch(deleteProject(id))
+  axiosWithAuth()
+  .delete(`/api/projects/${id}`)
+  .then(res => {
+        console.log(res,'handle delete')
+        dispatch(fetchProjects())
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
+
+  // const handleEdit = id => {
+
+  // }
+
+
 
   useEffect(() => {
     dispatch(fetchProjects())
   }, [nearProj, myProj ])
 
-  
+  const newArr = props.projectReducer.projects.filter(project => 
+    project.userid === token.id )
   
 
   console.log(nearProj,'near proj here')
-  console.log(myProj, 'my proj here')
+  console.log(props, 'my props here')
   console.log(props.projectReducer.projects, 'IM LOOKING 4 U')
   return(
     <>
@@ -91,7 +115,7 @@ const handleDelete = id => {
           {myProj && (
             <div className='project_info'>
             <h1>My Projects</h1>
-              {props.projectReducer.usersProjects.map(project => {
+              {newArr.map(project => {
                 return(
                   <div key={project.id} className='project'>
                     <h1>{project.title}</h1>
@@ -100,7 +124,11 @@ const handleDelete = id => {
                     <p>{project.location}</p>
                     <p>{project.timestamp}</p>
                     <p>{project.solution}</p>
-                    <button>Edit Project</button>
+                    <button onClick={() => {
+                      dispatch(addProjectToEdit(project.id, history))
+                    }}>
+                    Edit Project
+                     </button>
                     <button onClick={() => handleDelete(project.id)}>Delete Project</button>
                   </div>
                 )
@@ -117,4 +145,4 @@ const mapStateToProps = state =>{
   return state;
 }
 
-export default connect( mapStateToProps , {  deleteProject } )(ProjShowcase);
+export default connect( mapStateToProps , {  addProjectToEdit  } )(ProjShowcase);

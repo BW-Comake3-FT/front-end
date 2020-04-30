@@ -9,34 +9,58 @@ const ProjEditSubForm = props => {
 
     return(
         <div>
-
-            <h1>Edit Form:</h1>
-
-            <div>
-                <form onSubmit>
-                    <label htmlFor="title">
-                        <input
-                            type="text"
-                            id="title"
-                            name="title"
-                            placeholder="Title"
-                        />
-                    </label>
-
-                    <label ftmlFor="description">
-                        <input
-                            type="text"
-                            id="description"
-                            name="description"
-                            placeholder="Description"
-                        />
-                    </label>
-
-                    <button type="submit">
-                        Submit
-                    </button>
-                </form>
-            </div>
+        <h1>Edit Form:</h1>
+        <div>
+         <form onSubmit={handleSubmit()}>
+         <label htmlFor="title">
+        <input 
+        type="text"
+        id='title'
+        name='title'
+        placeholder='Title'
+        ref={register({
+                 required: 'Required'
+             })}
+        />
+      </label>
+      <label htmlFor="description">
+        <input 
+        type="text"
+        id='description'
+        name='description'
+        placeholder='Description'
+        ref={register({
+                 required: 'Required'
+             })}
+        />
+      </label>
+      <label htmlFor="category">
+        <input 
+        type="text"
+        id='category'
+        name='category'
+        placeholder='Category'
+        ref={register({
+                 required: 'Required'
+             })}
+        />
+      </label>
+      <label htmlFor="solution">
+        <input 
+        type="text"
+        id='solution'
+        name='solution'
+        placeholder='Solution'
+        ref={register({
+                 required: 'Required'
+             })}
+        />
+      </label>
+        <button type="submit">
+            Submit Edit
+        </button>
+        </form>
+        </div>
         </div>
     )
 }

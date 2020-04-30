@@ -19,8 +19,10 @@ export {
 export { 
   fetchProjects,
   submitProject,
-  deleteProject,
-
+  // deleteProject,
+  addProjectToEdit,
+  ADD_PROJECT_TO_EDIT,
+  UPDATE_PROJECTS,
   FETCH_PROJECTS_START,
   FETCH_PROJECTS_SUCCESS, 
   FETCH_PROJECTS_FAILURE,
@@ -29,7 +31,7 @@ export {
   SUBMIT_PROJECT_SUCCESS, 
   SUBMIT_PROJECT_FAILURE,
 
-  DELETE_PROJECT_SUCCESS,
-  DELETE_PROJECT_FAILURE
+  // DELETE_PROJECT_SUCCESS,
+  // DELETE_PROJECT_FAILURE
   
 } from './userActions';
