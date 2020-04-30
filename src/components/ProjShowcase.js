@@ -6,7 +6,9 @@ import '../css/dashboard.css';
 import { fetchProjects } from '../actions';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { addProjectToEdit } from '../actions'
+import { addProjectToEdit, editProject } from '../actions';
+
+import moment from 'moment';
 
 const jwt = require('jsonwebtoken')
 
@@ -16,7 +18,7 @@ const jwt = require('jsonwebtoken')
 const ProjShowcase = props => {
   const [nearProj, setNearProj] = useState(false);
   const [myProj, setMyProj] = useState(false);
-  const [upvote, setUpvote] = useState(0);
+  const [voted, setVoted] = useState(false);
  
   
 
@@ -50,14 +52,10 @@ const handleDelete = id => {
       })
   }
 
-  const handleUpvote = e => {
-    e.preventDefault();
-    setUpvote(upvote + 1)
-  }
 
   useEffect(() => {
     dispatch(fetchProjects())
-  }, [])
+  }, [voted])
 
   const newArr = props.projectReducer.projects.filter(project => 
     project.userid === token.id )
@@ -93,17 +91,27 @@ const handleDelete = id => {
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
                 <p>{project.location}</p>
-                <p>{project.timestamp}</p>
+                <p>{moment(project.timestamp).format('MMMM Do, YYYY')}</p>
                 <p>{project.solution}</p>
-                <button onClick={handleUpvote}>
-                <i class='far fa-thumbs-up'/>{upvote} </button>
+                <div className='voteBtns'>
+                <i onClick={() =>{
+                  dispatch(editProject({upvote: project.upvote+1}, project.id, history))
+                  setVoted(!voted)
+                }} 
+                className='far fa-thumbs-up' style={{fontSize:'24px'}}>{project.upvote}</i>
+
+                <i onClick={() =>{
+                  dispatch(editProject({downvote: project.downvote+1}, project.id, history))
+                  setVoted(!voted)
+                }} 
+                className='far fa-thumbs-down' style={{fontSize:'24px'}}>{project.downvote}</i>
+                </div>
                 </div>
                 )})}
             </div>
           )}
           {myProj && (
             <div className='project_info'>
-            <h1>My Projects</h1>
               {newArr.map(project => {
                 return(
                   <div key={project.id} className='project'>
@@ -111,14 +119,17 @@ const handleDelete = id => {
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <p>{project.location}</p>
-                    <p>{project.timestamp}</p>
+                    <p>{moment(project.timestamp).format('MMMM Do, YYYY')}</p>
                     <p>{project.solution}</p>
-                    <button onClick={() => {
-                      dispatch(addProjectToEdit(project, history))
+                    <div className='editDeleteBtns'>
+                        <button className='editBtn' onClick={() => {
+                      dispatch(addProjectToEdit(project.id, history))
                     }}>
                     Edit Project
                      </button>
-                    <button onClick={() => handleDelete(project.id)}>Delete Project</button>
+                    <button className='delBtn' onClick={() => handleDelete(project.id)}>Delete Project</button>
+                    </div>
+                  
                   </div>
                 )
               })}
@@ -134,4 +145,4 @@ const mapStateToProps = state =>{
   return state;
 }
 
-export default connect( mapStateToProps , {  addProjectToEdit  } )(ProjShowcase);
+export default connect( mapStateToProps , {  addProjectToEdit, editProject  } )(ProjShowcase);

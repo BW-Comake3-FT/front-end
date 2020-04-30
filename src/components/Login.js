@@ -42,7 +42,7 @@ const Login = props => {
              })}
          />
          <br/>
-         <label className="password_label_login"htmlFor="password">Password</label>
+         <label className="password_label_login" htmlFor="password">Password</label>
          <input 
          className="password_input_login"
          id='password'

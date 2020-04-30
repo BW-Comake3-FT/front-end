@@ -55,7 +55,7 @@ const Signup = props => {
                 id='password'
                 type='password'
                 name='password'
-                placeholder="password"
+                placeholder="Password"
                 ref={register({
                     required: 'Required'
                 })}

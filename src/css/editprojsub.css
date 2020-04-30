@@ -1,0 +1,22 @@
+
+.editTitle{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.editForm{
+  width: 60%;
+  height: 70vh;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.editForm input{
+
+}
