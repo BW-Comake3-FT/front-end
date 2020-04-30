@@ -42,7 +42,7 @@ const Navigation = props => {
         to=''
         className='link'
         onClick={(e) => handleLogout(e)}>
-          Log out
+          Log Out
         </Link>
 
       </div>

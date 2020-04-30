@@ -2,7 +2,12 @@ import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
+
+// import { submitProject } from '../actions';
+import '../css/projsub.css'
+
  import { submitProject } from '../actions';
+
 
 
 
@@ -19,12 +24,13 @@ const onSubmit = (newProject) => {
 
 console.log(props)
 return(
-  <div>
+  <div className="submit_page">
     <h1>Submit Form:</h1>
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="submit_form" onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="title">
         <input 
+        className="title"
         type="text"
         id='title'
         name='title'
@@ -34,41 +40,59 @@ return(
              })}
         />
       </label>
+      <br/>
       <label htmlFor="description">
-        <input 
+        <textarea
+        className="description" 
         type="text"
         id='description'
         name='description'
         placeholder='Description'
+        rows='5'
         ref={register({
                  required: 'Required'
              })}
         />
       </label>
+      <br/>
       <label htmlFor="category">
-        <input 
-        type="text"
-        id='category'
+        <select
+        className="category"
+        id='cactegory'
         name='category'
-        placeholder='Category'
+        placeholder='How would you classify this issue?'
         ref={register({
                  required: 'Required'
              })}
-        />
+        >
+        <option defaultValue='how would you classify this issue?'>How would you classify this issue?</option>
+        <option value='school'>School</option>
+        <option value='church'>Church</option>
+        <option value='home owners association'>Home Owners Association</option>
+        <option value='State'>State</option>
+        </select>
       </label>
-      <label htmlFor="solution">
-        <input 
-        type="text"
-        id='solution'
-        name='solution'
-        placeholder='Solution'
+      <br/>
+      <label htmlFor="resolution">
+        <select
+        className="resolution"
+        id='resolution'
+        name='resolution'
+        placeholder='How can we solve this issue?'
         ref={register({
                  required: 'Required'
              })}
-        />
+        >
+        <option defaultValue='How can we solve this issue?'>How can we solve this issue?</option>
+        <option value='protest'>Protest</option>
+        <option value='petition'>Petition</option>
+        <option value='writing/calling our local government'>Writing/Calling our local government</option>
+        <option value='fundraiser'>Fundraiser</option>
+        </select>
       </label>
+      <br/>
+      <button className="submit" type='submit'>
 
-      <button type='submit'>
         Submit
       </button>
       </form>
