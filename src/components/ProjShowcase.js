@@ -16,6 +16,7 @@ const jwt = require('jsonwebtoken')
 const ProjShowcase = props => {
   const [nearProj, setNearProj] = useState(false);
   const [myProj, setMyProj] = useState(false);
+  const [upvote, setUpvote] = useState(0);
  
   
 
@@ -47,6 +48,11 @@ const handleDelete = id => {
       .catch(err => {
         console.log(err)
       })
+  }
+
+  const handleUpvote = e => {
+    e.preventDefault();
+    setUpvote(upvote + 1)
   }
 
   useEffect(() => {
@@ -89,6 +95,8 @@ const handleDelete = id => {
                 <p>{project.location}</p>
                 <p>{project.timestamp}</p>
                 <p>{project.solution}</p>
+                <button onClick={handleUpvote}>
+                <i class='far fa-thumbs-up'/>{upvote} </button>
                 </div>
                 )})}
             </div>
