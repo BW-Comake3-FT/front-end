@@ -11,17 +11,18 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
+
 export const login = (credentials, history) => dispatch => {
   console.log(credentials,'login action firing');
   dispatch({ type: LOGIN_START});
 
   return(
-   axios.post('https://co-make-app.herokuapp.com/api/auth/login', credentials)
+   axios.post('https://cors-anywhere.herokuapp.com/https://co-make-app.herokuapp.com/api/auth/login', credentials)
    .then(res => {
+     console.log(res,' response from login ')
      localStorage.setItem('token', res.data.token)
      dispatch({ type: LOGIN_SUCCESS });
      history.push('/dashboard');
-    //  , payload: res.data.token
    })
    .catch(err => {
      dispatch({ type: LOGIN_FAILURE, payload: err})
@@ -29,15 +30,20 @@ export const login = (credentials, history) => dispatch => {
   );
 };
 
-export const signup = (newUser) => dispatch => {
+export const signup = (newUser, history) => dispatch => {
   console.log('signup action firing');
   dispatch({ type: SIGNUP_START });
   return(
-    axios.post('https://co-make-app.herokuapp.com/api/auth/register', newUser)
-    .then(res => console.log(res))
-    // dispatch({ type: SIGNUP_SUCCESS, payload:  })
-    .catch(err => console.log(err))
-    // dispatch({ type: SIGNUP_FAILURE, payload: err });
+    axios.post('https://cors-anywhere.herokuapp.com/https://co-make-app.herokuapp.com/api/auth/register', newUser)
+    .then(res => {
+      dispatch({ type: SIGNUP_SUCCESS })
+      history.push('/')
+    })
+    .catch(err => {
+      console.log('Signup action error', err);
+      dispatch({ type: SIGNUP_FAILURE, payload: err });
+    })
+    
   );
 };
 

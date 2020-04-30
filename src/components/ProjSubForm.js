@@ -1,9 +1,14 @@
 import React from 'react';
-// import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+
 
 // import { submitProject } from '../actions';
 import '../css/projsub.css'
+
+ import { submitProject } from '../actions';
+
+
 
 
 const ProjSubForm = props => {
@@ -12,14 +17,17 @@ const ProjSubForm = props => {
 
 // const dispatch = useDispatch();
 
-// const onSubmit = () => {
-// }
+const onSubmit = (newProject) => {
+  props.submitProject(newProject,props.history)
+  console.log('submit new form', newProject)
+}
 
+console.log(props)
 return(
   <div className="submit_page">
     <h1>Submit Form:</h1>
     <div>
-      <form className="submit_form"onSubmit>
+      <form className="submit_form" onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="title">
         <input 
         className="title"
@@ -84,15 +92,14 @@ return(
       </label>
       <br/>
       <button className="submit" type='submit'>
+
         Submit
       </button>
       </form>
     </div>
   </div>
-  
 )
-
 
 }
 
-export default ProjSubForm;
+export default connect(null, { submitProject })(ProjSubForm);

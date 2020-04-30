@@ -16,7 +16,7 @@ const Login = props => {
   } = useForm();
 
   const onSubmit = credentials => {
-    props.login(credentials);
+    props.login(credentials, props.history);
     // console.log('login onsubmit', {credentials})
   }
 
