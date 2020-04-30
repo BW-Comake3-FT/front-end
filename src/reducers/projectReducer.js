@@ -7,7 +7,7 @@ import {
 
   const initialState = {
     projects: [],
-    projectsToEdit: {},
+    projectsToEdit: 0,
     message:'',
     error:''
   };

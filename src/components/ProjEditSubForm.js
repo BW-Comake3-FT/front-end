@@ -4,6 +4,10 @@ import { connect, useDispatch } from 'react-redux';
 import { editProject } from '../actions';
 import { useHistory } from 'react-router-dom';
 
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import '../css/editprojsub.css';
+
 
 const ProjEditSubForm = props => {
     const { handleSubmit, register, errors } = useForm();
@@ -12,16 +16,19 @@ const ProjEditSubForm = props => {
     const dispatch = useDispatch();
 
     const onSubmit = (project) => {
+      console.log(project,' IM BEING EDITED')
+      console.log(props,'HELOOOOOO')
       dispatch(editProject(project, props.projectReducer.projectsToEdit, history))
     }
 
     return(
         <div>
-        <h1>Edit Form:</h1>
+        <h1 className='editTitle'>Edit Form:</h1>
         <div>
-         <form onSubmit={handleSubmit(onSubmit)}>
+         <form className='editForm' onSubmit={handleSubmit(onSubmit)}>
          <label htmlFor="title">
         <input 
+        // variant="filled" 
         type="text"
         id='title'
         name='title'
@@ -33,6 +40,7 @@ const ProjEditSubForm = props => {
       </label>
       <label htmlFor="description">
         <input 
+        // variant="filled" 
         type="text"
         id='description'
         name='description'
@@ -44,6 +52,7 @@ const ProjEditSubForm = props => {
       </label>
       <label htmlFor="category">
         <input 
+        // variant="filled"
         type="text"
         id='category'
         name='category'
@@ -54,7 +63,8 @@ const ProjEditSubForm = props => {
         />
       </label>
       <label htmlFor="solution">
-        <input 
+        <input
+        //  variant="filled"
         type="text"
         id='solution'
         name='solution'
@@ -64,9 +74,9 @@ const ProjEditSubForm = props => {
              })}
         />
       </label>
-        <button type="submit">
+        <Button variant='contained' color='secondary' type="submit">
             Submit Edit
-        </button>
+        </Button>
         </form>
         </div>
         </div>
