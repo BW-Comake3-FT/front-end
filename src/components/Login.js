@@ -13,14 +13,13 @@ const Login = props => {
   const { 
     register, 
     handleSubmit, 
-    // errors 
+    errors 
   } = useForm();
 
  
 
   const onSubmit = credentials => {
     props.login(credentials, props.history);
-    // console.log('login onsubmit', {credentials})
   }
 
   console.log({props},'im the props')

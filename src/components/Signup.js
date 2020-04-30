@@ -11,13 +11,6 @@ const Signup = props => {
         handleSubmit, 
         // errors 
     } = useForm();
-    // const {
-    //     values,
-    //     onInputChange,
-    //     onSubmit,
-    //     disabled,
-    //     errors,
-    // } = props
 
     const onSubmit = newUser => {
          props.signup(newUser, props.history);

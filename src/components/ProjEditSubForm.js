@@ -1,17 +1,25 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
+import { connect, useDispatch } from 'react-redux';
+import { editProject } from '../actions';
+import { useHistory } from 'react-router-dom';
+
 
 const ProjEditSubForm = props => {
     const { handleSubmit, register, errors } = useForm();
 
-    const onSubmit = () => {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const onSubmit = (project) => {
+      dispatch(editProject(project, props.projectReducer.projectsToEdit, history))
     }
 
     return(
         <div>
         <h1>Edit Form:</h1>
         <div>
-         <form onSubmit={handleSubmit()}>
+         <form onSubmit={handleSubmit(onSubmit)}>
          <label htmlFor="title">
         <input 
         type="text"
@@ -65,4 +73,8 @@ const ProjEditSubForm = props => {
     )
 }
 
-export default ProjEditSubForm
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps, { editProject })(ProjEditSubForm);

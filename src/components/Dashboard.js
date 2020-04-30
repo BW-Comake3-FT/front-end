@@ -1,16 +1,12 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import { connect } from 'react-redux';
 import '../css/dashboard.css';
 
 import ProfileInfo from './ProfileInfo';
 import ProjShowcase from './ProjShowcase';
 
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const Dashboard = props => {
-  
-console.log(props, 'here are dashboard p')
+const Dashboard = () => {
   return(
     <div className='dashboard'>
       <h1>Dashboard</h1>
@@ -25,9 +21,5 @@ console.log(props, 'here are dashboard p')
     </div>
   )
 }
-const mapStateToProps = state => {
-  return {
-    state
-  };
-};
-export default connect(mapStateToProps, { })(Dashboard);
+
+export default connect(null, { })(Dashboard);

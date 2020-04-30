@@ -10,8 +10,6 @@ const ProjSubForm = props => {
 
  const { handleSubmit, register, errors} = useForm();
 
-// const dispatch = useDispatch();
-
 const onSubmit = (newProject) => {
   props.submitProject(newProject,props.history)
   console.log('submit new form', newProject)

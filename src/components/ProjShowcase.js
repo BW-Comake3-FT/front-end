@@ -36,14 +36,6 @@ const ProjShowcase = props => {
     setNearProj(false)
   }
 
-  // const toggleSwitch = (e, setState) => {
-  //   e.preventDefault();
-  //   setState(prevState => !prevState)
-  // }
-
-  
-
- 
 
 const handleDelete = id => {
   axiosWithAuth()
@@ -57,30 +49,19 @@ const handleDelete = id => {
       })
   }
 
-  // const handleEdit = id => {
-
-  // }
-
-
-
   useEffect(() => {
     dispatch(fetchProjects())
-  }, [nearProj, myProj ])
+  }, [])
 
   const newArr = props.projectReducer.projects.filter(project => 
     project.userid === token.id )
   
-
-  console.log(nearProj,'near proj here')
-  console.log(props, 'my props here')
-  console.log(props.projectReducer.projects, 'IM LOOKING 4 U')
   return(
     <>
     <div className='project_button_container'>
 
       <button 
       onClick={showNearMe}
-      // (e => toggleSwitch(e, setNearProj))
       className='project_button'>
       Projects
       </button>
@@ -125,7 +106,7 @@ const handleDelete = id => {
                     <p>{project.timestamp}</p>
                     <p>{project.solution}</p>
                     <button onClick={() => {
-                      dispatch(addProjectToEdit(project.id, history))
+                      dispatch(addProjectToEdit(project, history))
                     }}>
                     Edit Project
                      </button>
