@@ -28,21 +28,12 @@ function App() {
       component={Signup} 
       />
 
-      <Route 
+      <PrivateRoute 
       exact path='/dashboard'
       component={Dashboard}
-      />
-      {/* <PrivateRoute 
-      exact path='/dashboard'
-      component={Dashboard}
-       />     */}
+       />    
 
-      {/* <PrivateRoute
-      path='/submit-form'
-      component={ProjSubForm} 
-      /> */}
-      
-       <Route
+      <PrivateRoute
       path='/submit-form'
       component={ProjSubForm} 
       />
