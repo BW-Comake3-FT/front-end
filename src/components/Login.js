@@ -27,11 +27,12 @@ const Login = props => {
   
   return (
     <div className='login_form'>
-      <h1>Login</h1>
+      <h1 className="title_login">Login</h1>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}> 
-          <label htmlFor="email">Email</label>
-          <input  
+        <form className="sign_in_login"onSubmit={handleSubmit(onSubmit)}> 
+          <label className="email_label_login" htmlFor="email">Email</label>
+          <input
+          className="email_input_login"  
           id='email' 
           type="email" 
           name='email'
@@ -40,8 +41,10 @@ const Login = props => {
                  required: 'Required'
              })}
          />
-         <label htmlFor="password">Password</label>
+         <br/>
+         <label className="password_label_login"htmlFor="password">Password</label>
          <input 
+         className="password_input_login"
          id='password'
          type="password"
          name='password'
@@ -50,12 +53,13 @@ const Login = props => {
                  required: 'Required'
              })}
          />
-         <button type='submit'>Login</button>
+         <br/>
+         <button className="submit_login" type='submit'>Login</button>
+          <Link style={{textDecoration:"none"}} to='/signup'>
+            <p className="no_account_login">Don't have an account? Sign up!</p>
+          </Link>
         </form>
       </div>
-      <Link to='/signup'>
-      <p>Don't have an account? Sign up!</p>
-      </Link>
     </div>
   )
 }
