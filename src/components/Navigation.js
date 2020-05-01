@@ -19,9 +19,9 @@ const Navigation = props => {
     <div className='nav_container'>
     
       <h1 className='nav_logo'>
-      <Link to='/' 
+      <a href='https://lucid-wiles-1d88b1.netlify.app/index.html' 
       className='link'>
-      <span className='redCo'>Co</span>-Make</Link>{' '}
+      <span className='redCo'>Co</span>-Make</a>{' '}
       <i className='fas fa-hammer'></i>
       </h1>
 
