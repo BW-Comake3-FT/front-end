@@ -28,8 +28,9 @@ const Login = props => {
   return (
     <div className='login_form'>
       <h1 className="title_login">Login</h1>
+     <div className='loginError'>{props.loginReducer.error}</div> 
       <div>
-        <form className="sign_in_login"onSubmit={handleSubmit(onSubmit)}> 
+        <form className="sign_in_login" onSubmit={handleSubmit(onSubmit)}> 
           <label className="email_label_login" htmlFor="email">Email</label>
           <input
           className="email_input_login"  
@@ -41,6 +42,7 @@ const Login = props => {
                  required: 'Required'
              })}
          />
+        {errors.email  && <p className='validation'>Email is required</p>}
          <br/>
          <label className="password_label_login" htmlFor="password">Password</label>
          <input 
@@ -53,6 +55,7 @@ const Login = props => {
                  required: 'Required'
              })}
          />
+         {errors.password  && <p className='validation'>Password is required</p>}
          <br/>
          <button className="submit_login" type='submit'>Login</button>
           <Link style={{textDecoration:"none"}} to='/signup'>
@@ -64,4 +67,7 @@ const Login = props => {
   )
 }
 
-export default connect(null, { login })(Login);
+const mapStateToProps = state => {
+  return state;
+}
+export default connect(mapStateToProps, { login })(Login);

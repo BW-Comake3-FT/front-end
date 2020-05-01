@@ -11,7 +11,7 @@ const Signup = props => {
     const { 
         register, 
         handleSubmit, 
-        // errors 
+        errors 
     } = useForm();
 
     const onSubmit = newUser => {
@@ -35,6 +35,7 @@ const Signup = props => {
                 })}
                 />
             </label>
+            {errors.name && <p className='validation'>Name is required</p>}
             <br/>
             <label className="email_label_signup">Email:
                 <input
@@ -48,6 +49,7 @@ const Signup = props => {
                 })}
                 />
                 </label>
+                {errors.email  && <p className='validation'>Email is required</p>}
             <br/>
                 <label className="password_label_signup">Password:
                 <input
@@ -60,6 +62,7 @@ const Signup = props => {
                     required: 'Required'
                 })}
                     />
+              {errors.password  && <p className='validation'>Password is required</p>}
                     </label>
             <br/>
                     <label className="zipcode_label_signup">Zipcode:
@@ -74,6 +77,7 @@ const Signup = props => {
                 })}
                     />
                     </label>
+                    {errors.zipcode  && <p className='validation'>Zipcode is required</p>}
             <br/>
                     <button className="submit_signup" type='submit'>Submit</button>
                     <Link style={{textDecoration:"none"}} to='/'>

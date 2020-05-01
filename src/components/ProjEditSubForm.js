@@ -17,7 +17,7 @@ const ProjEditSubForm = props => {
 
     const onSubmit = (project) => {
       console.log(project,' IM BEING EDITED')
-      console.log(props,'HELOOOOOO')
+      console.log(props)
       dispatch(editProject(project, props.projectReducer.projectsToEdit, history))
     }
 
@@ -26,7 +26,7 @@ const ProjEditSubForm = props => {
         <h1 className='editTitle'>Edit Form:</h1>
         <div>
          <form className='editForm' onSubmit={handleSubmit(onSubmit)}>
-         <label htmlFor="title">
+         <label htmlFor="title">Title
         <input 
         // variant="filled" 
         type="text"
@@ -38,7 +38,8 @@ const ProjEditSubForm = props => {
              })}
         />
       </label>
-      <label htmlFor="description">
+      {errors.title && <p className='validation'>Title is required</p>}
+      <label htmlFor="description">Description
         <input 
         // variant="filled" 
         type="text"
@@ -50,7 +51,8 @@ const ProjEditSubForm = props => {
              })}
         />
       </label>
-      <label htmlFor="category">
+      {errors.description && <p className='validation'>Description is required</p>}
+      <label htmlFor="category">Category
         <input 
         // variant="filled"
         type="text"
@@ -62,7 +64,9 @@ const ProjEditSubForm = props => {
              })}
         />
       </label>
-      <label htmlFor="solution">
+      {errors.category && <p className='validation'>Category is required</p>}
+
+      <label htmlFor="solution">Solution
         <input
         //  variant="filled"
         type="text"
@@ -74,6 +78,7 @@ const ProjEditSubForm = props => {
              })}
         />
       </label>
+      {errors.solution && <p className='validation'> is required</p>}
         <Button variant='contained' color='secondary' type="submit">
             Submit Edit
         </Button>

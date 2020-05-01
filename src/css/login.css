@@ -12,6 +12,18 @@
 
 }
 
+/* Login Error */
+.loginError{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.validation{
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
 /* =====TITLE OF PAGE===== */
 
 .title_login{

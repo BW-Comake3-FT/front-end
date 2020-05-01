@@ -27,7 +27,7 @@ import {
         case ADD_PROJECT_TO_EDIT: 
         return {
           ...state,
-          projectsToEdit: action.payload.id
+          projectsToEdit: action.payload
         }
         case UPDATE_PROJECTS: 
         return {
