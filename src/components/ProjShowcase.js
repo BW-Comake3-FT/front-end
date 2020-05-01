@@ -95,14 +95,15 @@ const handleDelete = id => {
                 <p>{project.solution}</p>
                 <div className='voteBtns'>
                 <i onClick={() =>{
-                  dispatch(editProject({upvote: project.upvote+1}, project.id, history))
                   setVoted(!voted)
+                  dispatch(editProject({upvote: project.upvote+1}, project.id, history))
+                  
                 }} 
                 className='far fa-thumbs-up' style={{fontSize:'24px'}}>{project.upvote}</i>
 
                 <i onClick={() =>{
-                  dispatch(editProject({downvote: project.downvote+1}, project.id, history))
                   setVoted(!voted)
+                  dispatch(editProject({downvote: project.downvote+1}, project.id, history))
                 }} 
                 className='far fa-thumbs-down' style={{fontSize:'24px'}}>{project.downvote}</i>
                 </div>
@@ -115,7 +116,7 @@ const handleDelete = id => {
               {newArr.map(project => {
                 return(
                   <div key={project.id} className='project'>
-                    <h1>{project.title}</h1>
+                    <h1>{project.category}</h1>
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <p>{project.location}</p>

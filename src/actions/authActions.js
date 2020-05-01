@@ -21,11 +21,11 @@ export const login = (credentials, history) => dispatch => {
    .then(res => {
      console.log(res,' response from login ')
      localStorage.setItem('token', res.data.token)
-     dispatch({ type: LOGIN_SUCCESS });
+     dispatch({ type: LOGIN_SUCCESS, payload: res.data.message });
      history.push('/dashboard');
    })
    .catch(err => {
-     dispatch({ type: LOGIN_FAILURE, payload: err})
+     dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message})
    })
   );
 };
